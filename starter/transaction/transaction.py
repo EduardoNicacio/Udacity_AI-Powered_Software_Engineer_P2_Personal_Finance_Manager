@@ -31,9 +31,11 @@ class Transaction:
         )
 
     def __hash__(self):
-        return hash((
-            self.amount,
-            self.category,
-            self.invoice_id,
-            self.description,
-        ))
+        return hash(
+            (
+                self.amount,
+                self.category,
+                self.invoice_id,
+                self.description,
+            )
+        )
