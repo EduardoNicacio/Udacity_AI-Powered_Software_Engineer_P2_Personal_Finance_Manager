@@ -29,7 +29,8 @@ class TestBudgetStrategy(unittest.TestCase):
     def test_strategy_interchangeability(self):
         """Both strategies can be used through the common interface."""
         balance = 1000
-        for strategy in (FiftyThirtyTwentyStrategy(), ZeroBasedBudgetStrategy()):
+        strategies = [FiftyThirtyTwentyStrategy(), ZeroBasedBudgetStrategy()]
+        for strategy in strategies:
             self.assertIsInstance(strategy, IBudgetStrategy)
             result = strategy.execute(balance)
             self.assertAlmostEqual(sum(result.values()), balance)

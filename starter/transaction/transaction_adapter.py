@@ -3,6 +3,7 @@
 from transaction.transaction import Transaction
 from transaction.transaction_category import TransactionCategory
 
+
 class TransactionAdapter:
     def __init__(self, external_transaction):
         self.external_transaction = external_transaction
@@ -20,4 +21,6 @@ class TransactionAdapter:
         return Transaction(
             amount=self.external_transaction.amount,
             category=category,
+            invoice_id=self.external_transaction.invoice_id,
+            description=self.external_transaction.description,
         )

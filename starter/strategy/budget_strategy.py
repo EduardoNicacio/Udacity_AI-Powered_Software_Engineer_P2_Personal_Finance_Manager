@@ -15,7 +15,7 @@ class IBudgetStrategy:
 
 
 class FiftyThirtyTwentyStrategy(IBudgetStrategy):
-    """Allocate balance using the 50/30/20 rule: 50% needs, 30% wants, 20% savings."""
+    """50/30/20 rule: 50% needs, 30% wants, 20% savings."""
 
     def execute(self, balance):
         return {
@@ -26,7 +26,7 @@ class FiftyThirtyTwentyStrategy(IBudgetStrategy):
 
 
 class ZeroBasedBudgetStrategy(IBudgetStrategy):
-    """Allocate every dollar of the balance to specific categories (sum == balance)."""
+    """Zero-based: allocate every dollar to specific categories."""
 
     def execute(self, balance):
         return {
