@@ -50,7 +50,9 @@ class Balance:
         elif transaction.category == TransactionCategory.EXPENSE:
             self.add_expense(transaction.amount)
         else:
-            raise ValueError(f"Invalid transaction category: {transaction.category}")
+            raise ValueError(
+                f"Invalid transaction category: {transaction.category}"
+            )
         self.notify_observers(transaction)
 
     def register_observer(self, observer):
