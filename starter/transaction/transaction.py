@@ -16,3 +16,6 @@ class Transaction:
         if not isinstance(other, Transaction):
             return False
         return self.amount == other.amount and self.category == other.category
+
+    def __hash__(self):
+        return hash((self.amount, self.category))

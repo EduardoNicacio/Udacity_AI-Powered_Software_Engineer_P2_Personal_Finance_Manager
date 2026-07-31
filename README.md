@@ -13,22 +13,44 @@ Make sure you have python version >= 3.10.x installed on your computer.
 
 1. Clone the repo:
 
-```bash
-git clone https://github.com/udacity/cd14600-project-starter.git
-cd cd14600-project-starter/starter
-```
+    ```bash
+    git clone https://github.com/udacity/cd14600-project-starter.git
+    cd cd14600-project-starter/starter
+    ```
 
-1. Run the Program:
+2. Run the Program:
 
-```bash
-python main.py
+    ```bash
+    python main.py
+    ```
+
+## Project Structure
+
+```txt
+starter/
+├── main.py                          # Entry point and composition root
+├── balance/
+│   ├── balance.py                   # Singleton Balance class
+│   ├── balance_observer.py          # Observer interface + PrintObserver, LowBalanceAlertObserver
+│   ├── test_balance.py              # Tests for Balance
+│   └── test_balance_observer.py     # Tests for observers
+├── transaction/
+│   ├── transaction.py               # Transaction domain model
+│   ├── transaction_category.py      # TransactionCategory enum (INCOME, EXPENSE)
+│   ├── transaction_adapter.py       # Adapter for external transactions
+│   ├── external_income_transaction.py  # External data source
+│   ├── test_transaction.py          # Tests for Transaction
+│   └── test_transaction_adapter.py  # Tests for Adapter
+└── strategy/
+    ├── budget_strategy.py           # Strategy pattern (IBudgetStrategy + implementations)
+    └── test_budget_strategy.py      # Tests for strategies
 ```
 
 ## Testing
 
-This project uses Python’s built-in unittest framework.
+This project uses Python's built-in unittest framework. All tests run from the `starter/` directory.
 
-To run all tests:
+To run all tests (17 tests):
 
 ```bash
 python -m unittest discover
@@ -37,15 +59,16 @@ python -m unittest discover
 To run a single test file:
 
 ```bash
-python -m unittest balance/test_balance_observer.py
+python -m unittest balance.test_balance_observer
 ```
 
 ### Break Down Tests
 
 - test_balance.py → Verifies correct implementation of the Singleton Balance class.
-- test_transaction.py → Confirms transactions update balances correctly.
+- test_transaction.py → Confirms Transaction construction, string representation, equality, and hashability.
 - test_transaction_adapter.py → Ensures external income data is correctly adapted into Transaction objects.
-- test_balance_observer.py → Validates that low-balance alerts are triggered at the correct threshold.
+- test_balance_observer.py → Validates that low-balance alerts trigger at the correct threshold and that PrintObserver outputs the expected message.
+- test_budget_strategy.py → Validates budget allocation math and strategy interchangeability.
 
 ## Project Instructions
 

@@ -16,7 +16,7 @@ class Balance:
         return cls._instance
 
     def __init__(self):
-        """Initialize the balance. Prevent direct instantiation."""
+        """No-op; state is initialized in __new__."""
         pass
 
     @classmethod
@@ -25,8 +25,9 @@ class Balance:
         return cls()
 
     def reset(self):
-        """Reset the net balance to zero."""
+        """Reset the net balance to zero and clear all observers."""
         self._balance = 0.0
+        self._observers.clear()
 
     def add_income(self, amount):
         """Add income to the balance."""
@@ -70,4 +71,4 @@ class Balance:
     def summary(self):
         """Return a summary string of the net balance."""
         return f"Net balance: ${self._balance}"
-    
+
